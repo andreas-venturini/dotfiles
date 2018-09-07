@@ -1,0 +1,32 @@
+[user]
+	name = Andreas Venturini
+	email = andreas.venturini@gmail.com
+	signingkey = 23C2ECD54D44F576570C1949550543D04EF5C8CD
+[color]
+	ui = true
+
+# only performs fast-forward merges, fetches all upstream branches and cleans out old origin/* branches that no longer exist upstream
+[alias]
+	up = "!git remote update -p; git merge --ff-only @{u}"
+
+# converts CRLF to LF on commit only if a file with CRLF endings accidentally was introduced (e.g. from Windows)
+[core]
+	autocrlf = input
+	excludesfile = /home/andreas/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+# Adopt the new Git 2.0 "simple" semantics for push
+[push]
+	default = simple
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+[pull]
+	ff = only
+[rebase]
+	autosquash = true
+[merge]
+	conflictstyle = diff3
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
