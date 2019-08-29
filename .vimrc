@@ -26,10 +26,11 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rbenv'
 Plugin 'vim-scripts/tComment'
 Plugin 'janko-m/vim-test'
-Plugin 'rakr/vim-one'
-Plugin 'joshdick/onedark.vim'
+" Plugin 'rakr/vim-one'
+" Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'hashivim/vim-terraform'
+Plugin 'editorconfig/editorconfig-vim'
 
 "
 " All of your Plugins must be added before the following line
@@ -49,11 +50,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 " color scheme
-" colorscheme one
-" set background=light
-" let g:one_allow_italics = 1
+" set background=dark
+colorscheme delek
+let g:one_allow_italics = 1
 syntax on
-colorscheme onedark
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -105,10 +105,10 @@ augroup vimrcEx
   set updatetime=1000
   " let g:ale_lint_on_text_changed = 0
   let g:ale_set_highlights = 0
-  autocmd CursorHold * call ale#Lint()
-  autocmd CursorHoldI * call ale#Lint()
-  autocmd InsertEnter * call ale#Lint()
-  autocmd InsertLeave * call ale#Lint()
+  autocmd CursorHold * call ale#Queue(0)
+  autocmd CursorHoldI * call ale#Queue(0)
+  autocmd InsertEnter * call ale#Queue(0)
+  autocmd InsertLeave * call ale#Queue(0)
 augroup END
 
 " Softtabs, 2 spaces
@@ -144,3 +144,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Use docker for test runners
 let test#ruby#rspec#executable = 'docker-compose run web bin/rspec'
 let test#ruby#cucumber#executable = 'docker-compose run web bin/cucumber'
+
+
+" Ensure editorconfig plugin works well w/ fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
