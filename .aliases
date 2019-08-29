@@ -1,0 +1,24 @@
+# docker
+alias dc='docker-compose'
+alias dcrc="dc run web bin/rails c"
+alias dcb="dc run web bundle"
+alias dcrs='dc run web bin/rspec'
+alias dcc='dc run web bin/cucumber'
+alias dcm='dc run web bin/rake db:migrate'
+alias dcy='dc run web yarn'
+
+# git
+alias 'gc'='git commit -m'
+alias 'gs'='git status'
+alias 'ga'='git commit --amend'
+alias 'gco'='git checkout'
+
+# vim
+alias 'vim'='nvim'
+# alias 'did'=vim +'normal Go' +'r!date'
+
+# gpg
+alias gpg=gpg2
+
+# terraform
+alias terraform='aws-vault exec terraform --backend=secret-service -- terraform'
