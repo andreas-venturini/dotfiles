@@ -8,12 +8,14 @@
 # only performs fast-forward merges, fetches all upstream branches and cleans out old origin/* branches that no longer exist upstream
 [alias]
 	up = "!git remote update -p; git merge --ff-only @{u}"
+	delete-orphaned-branches = "!git checkout master; git fetch --all -p; git branch -vv | grep ': gone]' | awk '{ print $1 }' | xargs -n 1 git branch -D"
 
 # converts CRLF to LF on commit only if a file with CRLF endings accidentally was introduced (e.g. from Windows)
 [core]
 	autocrlf = input
 	excludesfile = /home/andreas/.gitignore_global
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = nvim
 
 # Adopt the new Git 2.0 "simple" semantics for push
 [push]
