@@ -55,6 +55,7 @@ ZSH_THEME="TheOne"
 plugins=(
   git
   vi-mode
+  z
 )
 
 # User configuration
@@ -89,7 +90,6 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source $HOME/.aliases
-source $HOME/coding/misc/z.sh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f /tmp/google-cloud-sdk/path.zsh.inc ]; then
