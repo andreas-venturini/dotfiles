@@ -31,6 +31,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'hashivim/vim-terraform'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'catppuccin/nvim'
 
 "
 " All of your Plugins must be added before the following line
@@ -51,7 +52,7 @@ filetype plugin indent on    " required
 "
 " color scheme
 " set background=dark
-colorscheme delek
+colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 let g:one_allow_italics = 1
 syntax on
 
