@@ -1,11 +1,12 @@
 # docker
-alias dc='docker-compose'
+alias dc='docker compose'
 alias dcrc="dc run web bin/rails c"
 alias dcb="dc run web bundle"
 alias dcrs='dc run web bin/rspec'
 alias dcc='dc run web bin/cucumber'
 alias dcm='dc run web bin/rake db:migrate'
 alias dcy='dc run web yarn'
+alias dcrr='dc run web bin/rails restart'
 
 # git
 alias 'gc'='git commit -m'
