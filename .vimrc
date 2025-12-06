@@ -15,7 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'w0rp/ale'
-Plugin 'valloric/youcompleteme'
+" Plugin 'valloric/youcompleteme'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'tpope/vim-rhubarb'
 Plugin 'vim-ruby/vim-ruby'
@@ -32,6 +32,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'hashivim/vim-terraform'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'catppuccin/nvim'
+Plugin 'm4xshen/hardtime.nvim'
 
 "
 " All of your Plugins must be added before the following line
@@ -149,3 +150,5 @@ let test#ruby#cucumber#executable = 'docker-compose run web bin/cucumber'
 
 " Ensure editorconfig plugin works well w/ fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+let g:CommandTPreferredImplementation='lua'
