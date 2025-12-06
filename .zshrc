@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/andreas/.oh-my-zsh
+export ZSH=/home/andreas/.oh-my-zsh
 
 # Set default user
 DEFAULT_USER=andreas
@@ -60,7 +60,7 @@ plugins=(
 
 # User configuration
 
-  export PATH="/home/andreas/.cabal/bin:/home/andreas/.rbenv/plugins/ruby-build/bin:/home/andreas/.rbenv/shims:/home/andreas/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+  export PATH="/home/andreas/.cabal/bin:/home/andreas/.rbenv/plugins/ruby-build/bin:/home/andreas/.rbenv/shims:/home/andreas/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/nvim-linux64/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -105,3 +105,12 @@ eval "$(rbenv init -)"
 
 # ref https://nullprogram.com/blog/2012/06/08/
 eval $(keychain --eval --quiet)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# prevent commands prefixed with a space from being saved in history
+setopt HIST_IGNORE_SPACE
+
+. "$HOME/.local/bin/env"
