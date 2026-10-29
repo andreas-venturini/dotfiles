@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Starts Claude Code as the claude-agent user in its clone of the current
+# checkout, e.g. ~/coding/app -> /home/claude-agent/coding/app.
+# Arguments go to claude, e.g. `claude-agent -w review` for a new worktree.
+set -euo pipefail
+
+AGENT=claude-agent
+AGENT_HOME="$(getent passwd "$AGENT" | cut -d: -f6)"
+
+if [[ -z "$AGENT_HOME" ]]; then
+  echo "claude-agent: the $AGENT user doesn't exist; run claude-agent/setup in the dotfiles repo." >&2
+  exit 1
+fi
+
+top="$(git rev-parse --show-toplevel 2>/dev/null || pwd -P)"
+main="$(dirname "$(git -C "$top" rev-parse --path-format=absolute --git-common-dir 2>/dev/null || echo "$top/.git")")"
+if [[ "$main" != "$HOME"/* ]]; then
+  echo "claude-agent: run it inside a checkout below $HOME." >&2
+  exit 1
+fi
+dir="$AGENT_HOME/${main#"$HOME"/}"
+
+exec sudo -u "$AGENT" -H -- bash -lc 'cd "$1" 2>/dev/null || { echo "claude-agent: $1 does not exist; add the checkout to ~/.config/claude-agent/repos and run claude-agent/setup." >&2; exit 1; }; shift; exec claude "$@"' claude-agent "$dir" "$@"
