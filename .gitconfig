@@ -1,9 +1,7 @@
 [user]
 	name = Andreas Venturini
-	email = andreas.venturini@gmail.com
+	email = 4801917+andreas-venturini@users.noreply.github.com
 	signingkey = 23C2ECD54D44F576570C1949550543D04EF5C8CD
-[color]
-	ui = true
 
 # only performs fast-forward merges, fetches all upstream branches and cleans out old origin/* branches that no longer exist upstream
 [alias]
@@ -13,25 +11,30 @@
 # converts CRLF to LF on commit only if a file with CRLF endings accidentally was introduced (e.g. from Windows)
 [core]
 	autocrlf = input
-	excludesfile = /home/andreas/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = nvim
 
-# Adopt the new Git 2.0 "simple" semantics for push
 [push]
-	default = simple
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	autoSetupRemote = true
+[fetch]
+	prune = true
 [pull]
 	ff = only
 [rebase]
 	autosquash = true
 [merge]
-	conflictstyle = diff3
-[credential]
+	conflictstyle = zdiff3
+[credential "https://git-codecommit.*.amazonaws.com"]
 	helper = !aws codecommit credential-helper $@
 	UseHttpPath = true
 [http]
 	postBuffer = 157286400
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
