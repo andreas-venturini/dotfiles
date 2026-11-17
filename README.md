@@ -5,6 +5,11 @@
 claude-agent/setup   # create the isolated claude-agent user (uses sudo)
 ```
 
+## Agents
+
+`agents/AGENTS.md` holds the global instructions for every coding agent: `install`
+links it as `~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md`.
+
 ## Claude Code
 
 `claude/hooks/worktree.sh` keeps Claude Code worktrees in

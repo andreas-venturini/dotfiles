@@ -15,9 +15,14 @@ link() {
   ln -sfn "$1" "$2"
 }
 
-for file in .aliases .gitconfig .vimrc .zshrc; do
+for file in .aliases .gitconfig .gitignore_global .vimrc .zshrc; do
   link "$DIR/$file" "$HOME/$file"
 done
+
+link "$DIR/config/gh/config.yml" "$HOME/.config/gh/config.yml"
+# One set of global agent instructions for Codex and Claude Code.
+link "$DIR/agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
+link "$DIR/agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
 
 link "$DIR/claude/hooks/worktree.sh" "$HOME/.claude/hooks/worktree.sh"
 link "$DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
