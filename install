@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Links the dotfiles and Claude Code config into $HOME and merges the hook and
 # status line settings into ~/.claude/settings.json. Safe to run again.
-# The isolated agent user is set up separately: claude-agent/setup.
 set -euo pipefail
 
 DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
@@ -26,7 +25,6 @@ link "$DIR/agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
 
 link "$DIR/claude/hooks/worktree.sh" "$HOME/.claude/hooks/worktree.sh"
 link "$DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
-link "$DIR/claude-agent/claude-agent" "$HOME/.local/bin/claude-agent"
 
 # Claude Code rewrites settings.json itself, so merge rather than link it.
 settings="$HOME/.claude/settings.json"
@@ -34,4 +32,4 @@ settings="$HOME/.claude/settings.json"
 jq -s '.[0] * .[1]' "$settings" "$DIR/claude/settings.json" > "$settings.tmp"
 mv "$settings.tmp" "$settings"
 
-echo "Installed. Set up the isolated agent user with: $DIR/claude-agent/setup"
+echo "Installed."
